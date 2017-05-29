@@ -95,7 +95,7 @@ class ViewController: UIViewController {
                         
                         self.createAlert(title: "Login error", message: "Invalid username/password")
                     } else {
-                        print("Logged in")
+                        print("Logged in!")
                         
                         self.performSegue(withIdentifier: "showUserProfile", sender: self)
                     }
