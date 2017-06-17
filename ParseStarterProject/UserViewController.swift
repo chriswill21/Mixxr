@@ -10,7 +10,13 @@ import UIKit
 import Parse
 
 class UserViewController: UIViewController {
-
+    
+    let user = PFUser.current()
+    
+    @IBOutlet var usersName: UILabel!
+    @IBAction func addFriends(_ sender: Any) {
+        performSegue(withIdentifier: "friendsSegue", sender: self)
+    }
     @IBAction func logout(_ sender: Any) {
         PFUser.logOutInBackground()
         //self.dismiss(animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
