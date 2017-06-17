@@ -36,19 +36,21 @@ class SignUpViewController: UIViewController {
         if firstname.text == "" || lastname.text == "" || phonenumber.text == ""{
             
             createAlert(title: "Something went wrong", message: "Please ensure that you type in your name and provided a valid phone number.")
+        
+        } else {
             
-        }
-        
-        user?["firstname"] = firstname.text!
-        user?["lastname"] = lastname.text!
-        user?["phonenumber"] = Int(phonenumber.text!)
-        
-        user?.saveInBackground { (success, error) in
-            if error != nil{
-                self.createAlert(title: "Something went wrongs", message: "Please ensure that you type in your name and provided a valid phone number.")
-            } else {
-                self.performSegue(withIdentifier: "infoToProfile", sender: self)
+            user?["firstname"] = firstname.text!
+            user?["lastname"] = lastname.text!
+            user?["phonenumber"] = phonenumber.text
+            
+            user?.saveInBackground { (success, error) in
+                if error != nil{
+                    self.createAlert(title: "Something went wrongs", message: "Please ensure that you type in your name and provided a valid phone number.")
+                } else {
+                    self.performSegue(withIdentifier: "infoToProfile", sender: self)
+                }
             }
+            
         }
         
     }

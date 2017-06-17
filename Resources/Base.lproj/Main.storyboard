@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -509,7 +509,6 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="usersName" destination="aEd-wg-C69" id="Mkr-Zq-YJj"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="logoutSegue" id="mUT-vN-k1e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Fk-67-uLa" userLabel="First Responder" sceneMemberID="firstResponder"/>

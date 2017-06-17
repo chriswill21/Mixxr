@@ -45,6 +45,7 @@ class ViewController: UIViewController {
             
         } else {
             
+            
             activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
             activityIndicator.center = self.view.center
             activityIndicator.hidesWhenStopped = true
@@ -78,7 +79,7 @@ class ViewController: UIViewController {
                         print("User signed up")
                         self.performSegue(withIdentifier: "SignUpSegue", sender: self)
 
-                        user["Event count"] = 0
+                        
                         
                     }
                 })
@@ -153,6 +154,7 @@ class ViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
     }
     override func didReceiveMemoryWarning() {
