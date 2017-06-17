@@ -37,6 +37,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func signUpOrLogin(_ sender: Any) {
+        //when users press the sign in button
+        
         if emailTextField.text == "" || passwordTextField.text == ""{
             
             createAlert(title: "Uh-oh", message: "Please enter an email and password")
@@ -59,6 +61,7 @@ class ViewController: UIViewController {
                 user.email = self.emailTextField.text
                 user.password = self.passwordTextField.text
                 
+                
                 user.signUpInBackground(block: { (success, error) in
                     
                     self.activityIndicator.stopAnimating()
@@ -73,8 +76,10 @@ class ViewController: UIViewController {
                         self.createAlert(title: "Oops", message: "Account already exists for this username")
                     } else {
                         print("User signed up")
+                        self.performSegue(withIdentifier: "SignUpSegue", sender: self)
+
+                        user["Event count"] = 0
                         
-                        self.performSegue(withIdentifier: "showUserProfile", sender: self)
                     }
                 })
                 
@@ -94,9 +99,11 @@ class ViewController: UIViewController {
                          }*/
                         
                         self.createAlert(title: "Login error", message: "Invalid username/password")
+                        
                     } else {
                         print("Logged in!")
                         
+
                         self.performSegue(withIdentifier: "showUserProfile", sender: self)
                     }
                     
@@ -136,12 +143,13 @@ class ViewController: UIViewController {
         }
     }
     
-    /*override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if PFUser.current() != nil{
             self.performSegue(withIdentifier: "showUserProfile", sender: self)
+
         }
-    }*/
-    
+        
+    }
     
     
     override func viewDidLoad() {
