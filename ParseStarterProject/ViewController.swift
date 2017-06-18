@@ -43,6 +43,7 @@ class ViewController: UIViewController {
             
             createAlert(title: "Uh-oh", message: "Please enter an email and password")
             
+            
         } else {
             
             
