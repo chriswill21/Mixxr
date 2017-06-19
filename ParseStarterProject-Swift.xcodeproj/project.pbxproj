@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		249F18801EF7D9F90044A4CD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249F187F1EF7D9F90044A4CD /* CoreLocation.framework */; };
 		3F0F38231EF47D4000E8EB5B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F38221EF47D4000E8EB5B /* SignUpViewController.swift */; };
 		3F2361651EF1D91400D04C0E /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2361641EF1D91400D04C0E /* FriendsViewController.swift */; };
 		3F2361691EF2BF0300D04C0E /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2361681EF2BF0300D04C0E /* EventCell.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		249F187F1EF7D9F90044A4CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3F0F38221EF47D4000E8EB5B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3F2361641EF1D91400D04C0E /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		3F2361681EF2BF0300D04C0E /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				249F18801EF7D9F90044A4CD /* CoreLocation.framework in Frameworks */,
 				81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */,
 				81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */,
 				81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */,
@@ -114,6 +117,7 @@
 		81BA816A1A49DB5600E65899 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				249F187F1EF7D9F90044A4CD /* CoreLocation.framework */,
 				81BA816B1A49DB6800E65899 /* Bolts.framework */,
 				81BA816C1A49DB6800E65899 /* Parse.framework */,
 				81BA816E1A49DB6800E65899 /* ParseFacebookUtils.framework */,
