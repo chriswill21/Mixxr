@@ -25,6 +25,6 @@ class User {
     }
     
     func getEventsAttended() -> [String] {
-        
+        return []
     }
 }
