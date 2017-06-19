@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C412ADC1EDFC1860007F480 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C412ADB1EDFC1860007F480 /* User.swift */; };
+		3F0F38231EF47D4000E8EB5B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F38221EF47D4000E8EB5B /* SignUpViewController.swift */; };
+		3F2361651EF1D91400D04C0E /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2361641EF1D91400D04C0E /* FriendsViewController.swift */; };
+		3F2361691EF2BF0300D04C0E /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2361681EF2BF0300D04C0E /* EventCell.swift */; };
+		3F23616B1EF2BF8000D04C0E /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F23616A1EF2BF8000D04C0E /* Events.swift */; };
 		3F9794FB1ED71B6E00B62E38 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9794FA1ED71B6E00B62E38 /* UserViewController.swift */; };
 		3F986C911ED89E7C0049B78C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F986C901ED89E7C0049B78C /* MapViewController.swift */; };
 		3F986C931ED89EAA0049B78C /* MakeEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F986C921ED89EAA0049B78C /* MakeEventViewController.swift */; };
@@ -24,7 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3C412ADB1EDFC1860007F480 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3F0F38221EF47D4000E8EB5B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3F2361641EF1D91400D04C0E /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		3F2361681EF2BF0300D04C0E /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		3F23616A1EF2BF8000D04C0E /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		3F9794FA1ED71B6E00B62E38 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		3F986C901ED89E7C0049B78C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3F986C921ED89EAA0049B78C /* MakeEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeEventViewController.swift; sourceTree = "<group>"; };
@@ -95,9 +101,12 @@
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				3F9794FA1ED71B6E00B62E38 /* UserViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				3F0F38221EF47D4000E8EB5B /* SignUpViewController.swift */,
+				3F2361641EF1D91400D04C0E /* FriendsViewController.swift */,
 				3F986C921ED89EAA0049B78C /* MakeEventViewController.swift */,
 				3F986C901ED89E7C0049B78C /* MapViewController.swift */,
-				3C412ADB1EDFC1860007F480 /* User.swift */,
+				3F2361681EF2BF0300D04C0E /* EventCell.swift */,
+				3F23616A1EF2BF8000D04C0E /* Events.swift */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -199,10 +208,13 @@
 			files = (
 				3F986C931ED89EAA0049B78C /* MakeEventViewController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
-				3C412ADC1EDFC1860007F480 /* User.swift in Sources */,
 				3F9794FB1ED71B6E00B62E38 /* UserViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				3F23616B1EF2BF8000D04C0E /* Events.swift in Sources */,
+				3F2361651EF1D91400D04C0E /* FriendsViewController.swift in Sources */,
+				3F0F38231EF47D4000E8EB5B /* SignUpViewController.swift in Sources */,
 				3F986C911ED89E7C0049B78C /* MapViewController.swift in Sources */,
+				3F2361691EF2BF0300D04C0E /* EventCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

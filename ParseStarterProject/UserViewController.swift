@@ -10,14 +10,50 @@ import UIKit
 import Parse
 
 class UserViewController: UIViewController {
-
+    
+    let user = PFUser.current()
+    
+    @IBOutlet var usersName: UILabel!
+    @IBAction func addFriends(_ sender: Any) {
+        performSegue(withIdentifier: "friendsSegue", sender: self)
+    }
     @IBAction func logout(_ sender: Any) {
         PFUser.logOut()
-        performSegue(withIdentifier: "logoutSegue", sender: self)
+        
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "login")
+        self.present(vc, animated: true, completion: nil)
+        
+        
+        /*if PFUser.current() == nil{
+            performSegue(withIdentifier: "logoutSegue", sender: self)
+        }
+        print("logged out")*/
         
     }
+    
+    
+    
+    /*@IBAction func logOutAction(sender: AnyObject){
+        
+        // Send a request to log out a user
+        PFUser.logOut()
+        
+        dispatchas.main.asynchronously(execute: { () -> Void in
+            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Login") as! UIViewController
+            self.present(viewController, animated: true, completion: nil)
+        })
+        
+    }*/
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let first = user?["firstname"] as! String
+        let last = user?["lastname"] as! String
+        usersName.text = first + " " + last
+        
 
         // Do any additional setup after loading the view.
     }

@@ -37,11 +37,15 @@ class ViewController: UIViewController {
     
     
     @IBAction func signUpOrLogin(_ sender: Any) {
+        //when users press the sign in button
+        
         if emailTextField.text == "" || passwordTextField.text == ""{
             
             createAlert(title: "Uh-oh", message: "Please enter an email and password")
             
+            
         } else {
+            
             
             activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
             activityIndicator.center = self.view.center
@@ -59,6 +63,7 @@ class ViewController: UIViewController {
                 user.email = self.emailTextField.text
                 user.password = self.passwordTextField.text
                 
+                
                 user.signUpInBackground(block: { (success, error) in
                     
                     self.activityIndicator.stopAnimating()
@@ -73,8 +78,10 @@ class ViewController: UIViewController {
                         self.createAlert(title: "Oops", message: "Account already exists for this username")
                     } else {
                         print("User signed up")
+                        self.performSegue(withIdentifier: "SignUpSegue", sender: self)
+
                         
-                        self.performSegue(withIdentifier: "showUserProfile", sender: self)
+                        
                     }
                 })
                 
@@ -94,9 +101,11 @@ class ViewController: UIViewController {
                          }*/
                         
                         self.createAlert(title: "Login error", message: "Invalid username/password")
+                        
                     } else {
                         print("Logged in!")
                         
+
                         self.performSegue(withIdentifier: "showUserProfile", sender: self)
                     }
                     
@@ -136,15 +145,17 @@ class ViewController: UIViewController {
         }
     }
     
-    /*override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if PFUser.current() != nil{
             self.performSegue(withIdentifier: "showUserProfile", sender: self)
+
         }
-    }*/
-    
+        
+    }
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
     }
     override func didReceiveMemoryWarning() {
