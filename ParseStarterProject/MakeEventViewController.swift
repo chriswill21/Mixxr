@@ -113,9 +113,9 @@ class MakeEventViewController: UIViewController, UISearchBarDelegate,CLLocationM
     }
     
     @IBAction func eventcreator(_ sender: Any) {
-        titles.append(eventname.text!)
-        locations.append(self.pointAnnotation.coordinate)
-        captions.append(self.captionname.text!)
+        titles.insert(eventname.text!, at: 0)
+        locations.insert(self.pointAnnotation.coordinate, at: 0)
+        captions.insert(self.captionname.text!, at: 0)
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM, dd, YYYY"
         times.append(formatter.string(from: DatePicker.date))

@@ -48,6 +48,12 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        eventslisting.reloadData()
+        
+        
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
