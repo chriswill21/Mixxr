@@ -53,13 +53,20 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func loadSearchUsers(searchString: String) {
         var search_query = PFUser.query()
-        
+        let test = Int(searchString)
         // Filter by search string
-        search_query?.whereKey("phonenumber", contains: searchString)
+        if test != nil {
+            search_query?.whereKey("phonenumber", contains: searchString)
+        } else {
+            search_query?.whereKey("fullname", contains: searchString)
+            
+        }
+        
         
         self.searchActive = true
         search_query?.findObjectsInBackground { (objects: [PFObject]?, error: Error?) -> Void in
             if (error == nil) {
+                print(objects)
                 self.searchUsers.removeAll(keepingCapacity: false)
                 self.searchUsers += objects as! [PFUser]
                 self.friendsTableView.reloadData()
@@ -86,7 +93,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         print("cancel")
         // Clear any search criteria
         searchBar.text = ""
-        
+        searchUsers = [PFUser]()
         // Force reload of table data from normal data source
         if friendsRequestsSwitch.selectedSegmentIndex == 0{
             table_data = friends
@@ -95,6 +102,11 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
     }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchUsers = [PFUser]()
+    }
+
 
     // MARK: - UISearchResultsUpdating Methods
     
@@ -196,7 +208,6 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     // fixed font style. use custom view (UILabel) if you want something different
 
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        print("cell")
         if friendsRequestsSwitch.selectedSegmentIndex == 0{
             return "My Mixxes"
         } else {
@@ -210,7 +221,6 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     public func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        print("cell")
         return 1
     }
     
@@ -219,7 +229,6 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         {
             // #warning Incomplete method implementation.
             // Return the number of rows in the section.
-            print("cell")
         
             if (self.searchController.isActive) {
                 return self.searchUsers.count
@@ -234,19 +243,35 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("cell")
-        var cell:UITableViewCell = self.friendsTableView.dequeueReusableCell(withIdentifier: "friendsCell")! as UITableViewCell
+        //var cell:UITableViewCell = self.friendsTableView.dequeueReusableCell(withIdentifier: "friendsCell")! as! FriendingCellsTableViewCell
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath) as! FriendingCellsTableViewCell
         
         if (self.searchController.isActive && self.searchUsers.count > indexPath.row) {
             // bind data to the search results cell
             let first = searchUsers[indexPath.row]["firstname"] as! String
             let last = searchUsers[indexPath.row]["lastname"] as! String
-            cell.textLabel?.text = first + last
+            cell.textLabel?.text = first + " " + last
         } else {
             // bind data from your normal data source
             cell.textLabel?.text = table_data[indexPath.row]
         }
+        
+        if (self.searchController.isActive) {
+            //cell.addButton.isHidden = false
+            cell.addButton.setTitle("Add", for: .normal)
+        } else if friendsRequestsSwitch.selectedSegmentIndex == 1{
+            //cell.addButton.isHidden = false
+            cell.addButton.setTitle("Accept/Decline", for: .normal)
+        } else {
+            //cell.addButton.isHidden = true
+            cell.addButton.setTitle("Button", for: .normal)
+        }
         return cell
+    }
+    
+    public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.accessoryType = .detailDisclosureButton
     }
     
     
@@ -256,7 +281,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         updateFriends()
         configureSearchController()
-        
+        friendsTableView.dataSource = self
         //code below initializes a refresher and adds it above the tableview
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")

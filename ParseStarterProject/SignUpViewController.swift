@@ -42,7 +42,7 @@ class SignUpViewController: UIViewController {
             user?["firstname"] = firstname.text!
             user?["lastname"] = lastname.text!
             user?["phonenumber"] = phonenumber.text
-            
+            user?["fullname"] = firstname.text! + " " + lastname.text!
             user?.saveInBackground { (success, error) in
                 if error != nil{
                     self.createAlert(title: "Something went wrongs", message: "Please ensure that you type in your name and provided a valid phone number.")

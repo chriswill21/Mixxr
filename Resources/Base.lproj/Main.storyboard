@@ -231,13 +231,28 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="friendsCell" id="hBi-NF-V3s">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="friendsCell" id="hBi-NF-V3s" customClass="FriendingCellsTableViewCell" customModule="ParseStarterProject_Swift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hBi-NF-V3s" id="qCC-Yq-DLe">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dij-lx-H3Y">
+                                                    <rect key="frame" x="308" y="8" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" red="0.37358897184444428" green="1" blue="0.67552976178682966" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addFriends:" destination="hBi-NF-V3s" eventType="touchUpInside" id="KKr-kE-Chh"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addButton" destination="Dij-lx-H3Y" id="dt7-FR-vGS"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -434,9 +449,6 @@
                                             <navigationItem title="Mixxr" id="voC-kb-ymG">
                                                 <barButtonItem key="leftBarButtonItem" systemItem="add" id="A3b-rI-QvW">
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <connections>
-                                                        <action selector="addFriends:" destination="G8u-Ax-lev" id="U3i-WR-MNS"/>
-                                                    </connections>
                                                 </barButtonItem>
                                                 <barButtonItem key="rightBarButtonItem" title="Logout" id="GkN-Uq-hnP">
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
