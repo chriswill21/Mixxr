@@ -12,8 +12,15 @@ class FriendingCellsTableViewCell: UITableViewCell {
 
     @IBOutlet var addButton: UIButton!
     @IBAction func addFriends(_ sender: UIButton) {
-        
     }
+    
+    @IBAction func otherButtonAction(_ sender: UIButton) {
+    }
+    
+    @IBOutlet var otherButtonOutlet: UIButton!
+    @IBOutlet var fullName: UILabel!
+
+    @IBOutlet var phoneNumber: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

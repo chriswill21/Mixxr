@@ -13,11 +13,17 @@ import Parse
 class FriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
 
     @IBOutlet var friendsTableView: UITableView!
-    var friends = [""]
+    //var friends = [""]
+    var friends = [String]()
+    var friend_user: [PFObject] = [PFObject]()      //array containing PF objects for friends
     var requests = [String]()
+    var request_user: [PFObject] = [PFObject]()     //array containing PF object for requests
+    
     var table_data = [String]()
     var refresher:UIRefreshControl!
     var num_requests = 0
+    var screen = 0
+    var my_request = PFUser()
     
     @IBOutlet var friendsLabel: UILabel!
     @IBOutlet var requestsCountLabel: UILabel!
@@ -32,7 +38,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func configureSearchController() {
         searchController = UISearchController(searchResultsController: nil)
-        self.searchController.dimsBackgroundDuringPresentation = true
+        self.searchController.dimsBackgroundDuringPresentation = false
         
         // This is used for dynamic search results updating while the user types
         // Requires UISearchResultsUpdating delegate
@@ -42,7 +48,8 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         self.searchController.searchBar.placeholder = "Find new Mixxes using name or phone number..."
         self.searchController.searchBar.sizeToFit()
         self.searchController.searchBar.delegate = self
-        self.definesPresentationContext = true
+        self.definesPresentationContext = false
+
         
         // Place the search bar view to the tableview headerview.
         friendsTableView.tableHeaderView = searchController.searchBar
@@ -66,7 +73,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         self.searchActive = true
         search_query?.findObjectsInBackground { (objects: [PFObject]?, error: Error?) -> Void in
             if (error == nil) {
-                print(objects)
+                //print(objects)
                 self.searchUsers.removeAll(keepingCapacity: false)
                 self.searchUsers += objects as! [PFUser]
                 self.friendsTableView.reloadData()
@@ -86,7 +93,6 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         if (searchString != "") {
             loadSearchUsers(searchString: searchString)
         }
-        print("clicked")
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -126,62 +132,70 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     public func updateFriends() {
         
         //function updates user's friends list as soon as the app is opend or refreshed by querying the friends class
+
+
         let friends_query = PFQuery(className:"friends")
-        friends_query.whereKey("phonenumber", equalTo:PFUser.current()?.username)
-        
+        friends_query.whereKey("of", equalTo:PFUser.current())
 
-        friends_query.findObjectsInBackground {
-            (objects: [PFObject]?, error: Error?) -> Void in
-            if error == nil {
+        friends_query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) -> Void in
+            if (error == nil) {
                 // The find succeeded.
                 NSLog("Successfully retrieved \(objects?.count) records.")
+                
                 // Do something with the found objects
-                for object in objects! {
-                    
-                    if object["accepted"]! != nil {
-                        self.friends = object["accepted"]! as! Array
-                    }
-                    self.friendsTableView.reloadData()
-                }
+                self.friend_user += objects as [PFObject]!
                 
             } else {
                 // Log details of the failure
+                print("search query error")
             }
+            
+            self.friends.removeAll()
+            for friend in self.friend_user{
+                let my_friend = friend["fullname"]
+                self.friends.append(my_friend as! String)
+            }
+            self.friendsTableView.reloadData()
             self.refresher.endRefreshing()
         }
         
-        var requests_query = PFQuery(className:"requests")
-        requests_query.whereKey("phonenumber", equalTo:PFUser.current()?.username)
         
-        requests_query.findObjectsInBackground {
-            (objects: [PFObject]?, error: Error?) -> Void in
-            if error == nil {
-                // The find succeeded.
-                NSLog("Successfully retrieved \(objects?.count) records.")
-                // Do something with the found objects
-                for object in objects! {
-                    
-                    if object["requests"]! != nil {
-                        self.requests = object["requests"]! as! Array
-                    }
-                }
-                
-                self.num_requests = self.requests.count
-                print(self.num_requests)
-                if self.num_requests == 0 {
-                    self.requestsCountLabel.isHidden = true
-                } else {
-                    self.friendsLabel.isHidden = false
-                    self.friendsLabel.text = String(self.num_requests)
-                }
-
-                self.friendsTableView.reloadData()
-                
+        //ensure that requests array (of strings) is empty every time you do a request query
+        
+        
+        let requests_query = PFQuery(className:"request")
+        requests_query.whereKey("to", equalTo:PFUser.current()!)
+        
+        requests_query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) -> Void in
+            if (error == nil) {
+                self.request_user.removeAll(keepingCapacity: false)
+                self.request_user += objects as [PFObject]!
             } else {
                 // Log details of the failure
+                print("search query error")
             }
+            
+            self.requests.removeAll()
+
+            for request in self.request_user{
+                let made_request = request["fullname"]
+                self.requests.append(made_request as! String)
+            }
+            self.num_requests = self.requests.count
+            if self.num_requests == 0 {
+                self.requestsCountLabel.isHidden = true
+            } else {
+                self.requestsCountLabel.isHidden = false
+                self.requestsCountLabel.text = String(self.num_requests)
+            }
+            self.friendsTableView.reloadData()
+            
+            //print("we gone find requests")
+            //print(self.requests.count)
             self.refresher.endRefreshing()
         }
+        
+        
     }
     
     
@@ -205,10 +219,58 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         friendsTableView.reloadData()
     }
     
+    
+    func makeRequest(otherUser: PFUser) {
+        let follow = PFObject(className: "request")
+        follow.setObject(PFUser.current()!, forKey: "from")
+        follow.setObject(otherUser, forKey: "to")
+        follow.setObject(NSDate(), forKey: "date")
+        follow.setObject(PFUser.current()?["fullname"] as! String, forKey: "fullname")
+        follow.setObject(PFUser.current()?["phonenumber"] as! String, forKey: "phonenumber")
+        
+        let acl = PFACL()
+        acl.getPublicReadAccess = true
+        acl.getPublicWriteAccess = true
+        follow.acl = acl
+        follow.saveInBackground()
+    }
+    
+    func acceptRequest(otherUser: PFUser, index: Int, other_user_name: String, other_user_number: String) {
+        let follow_1 = PFObject(className: "friends")
+        
+        //set other user to be follower OF current user
+        follow_1.setObject(PFUser.current()!, forKey: "of")
+        follow_1.setObject(otherUser, forKey: "user")
+        follow_1.setObject(other_user_name , forKey: "fullname")
+        follow_1.setObject(other_user_number , forKey: "phonenumber")
+        
+        
+        let follow_2 = PFObject(className: "friends")
+        //set current user to be follower OF other user
+        follow_2.setObject(otherUser, forKey: "of")
+        follow_2.setObject(PFUser.current()!, forKey: "user")
+        follow_2.setObject(PFUser.current()?["fullname"] as! String, forKey: "fullname")
+        follow_2.setObject(PFUser.current()?["phonenumber"] as! String, forKey: "phonenumber")
+        
+        print("lil boat")
+        print(self.request_user)
+        print(self.request_user[index])
+        self.request_user[index].deleteInBackground()
+        
+        //remove request users of the index that i pressed
+        follow_1.saveInBackground()
+        follow_2.saveInBackground()
+        
+        updateFriends()
+        friendsTableView.reloadData()
+    }
+    
     // fixed font style. use custom view (UILabel) if you want something different
 
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if friendsRequestsSwitch.selectedSegmentIndex == 0{
+        if self.searchController.isActive {
+            return "Search"
+        } else if friendsRequestsSwitch.selectedSegmentIndex == 0{
             return "My Mixxes"
         } else {
             return "Requests"
@@ -251,23 +313,94 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             // bind data to the search results cell
             let first = searchUsers[indexPath.row]["firstname"] as! String
             let last = searchUsers[indexPath.row]["lastname"] as! String
-            cell.textLabel?.text = first + " " + last
+            //cell.textLabel?.text = first + " " + last
+            cell.fullName.text? = first + " " + last
+            cell.phoneNumber.text? = searchUsers[indexPath.row]["phonenumber"] as! String
+
         } else {
-            // bind data from your normal data source
-            cell.textLabel?.text = table_data[indexPath.row]
+            if friendsRequestsSwitch.selectedSegmentIndex == 0 {
+                // bind data from your normal data source
+                cell.phoneNumber.text? = " "
+                cell.textLabel?.text = table_data[indexPath.row]
+                print(table_data)
+            } else {
+                cell.fullName.text? = self.requests[indexPath.row]
+                //cell.phoneNumber.text? = request_user[indexPath.row]["phonenumber"] as! String
+            }
+            
         }
         
+        
+        cell.addButton.tag = indexPath.row
+        cell.otherButtonOutlet.tag = indexPath.row
+        
+
+        cell.addButton.addTarget(self, action: #selector(FriendsViewController.friendAction(sender:)), for: .touchUpInside)
+        cell.otherButtonOutlet.addTarget(self, action: #selector(FriendsViewController.friendActionOther(sender:)), for: .touchUpInside)
+        
+        
         if (self.searchController.isActive) {
-            //cell.addButton.isHidden = false
-            cell.addButton.setTitle("Add", for: .normal)
+            cell.addButton.isHidden = false
+            cell.otherButtonOutlet.isHidden = true
+            
+            
+            cell.addButton.setTitle("add", for: .normal)
+            cell.addButton.titleLabel?.font =  UIFont(name: "Futura", size: 20)
+            
+            screen = -1
+            my_request = searchUsers[indexPath.row]
+            
         } else if friendsRequestsSwitch.selectedSegmentIndex == 1{
-            //cell.addButton.isHidden = false
-            cell.addButton.setTitle("Accept/Decline", for: .normal)
+            print("add request button")
+            
+            cell.addButton.isHidden = false
+            cell.otherButtonOutlet.isHidden = false
+            
+            cell.addButton.setTitle("Decline", for: .normal)
+            cell.addButton.titleLabel?.font =  UIFont(name: "Futura", size: 12)
+            cell.otherButtonOutlet.setTitle("Accept", for: .normal)
+            cell.otherButtonOutlet.titleLabel?.font =  UIFont(name: "Futura", size: 12)
+            
+            //print(self.request_user)
+            screen = 1
         } else {
-            //cell.addButton.isHidden = true
+            cell.addButton.isHidden = true
+            cell.otherButtonOutlet.isHidden = true
+            
             cell.addButton.setTitle("Button", for: .normal)
+            screen = 0
         }
+        
         return cell
+    }
+    
+    
+    @IBAction func friendAction(sender: UIButton) {
+        if screen == -1{
+            if let cell = sender.superview?.superview as? FriendingCellsTableViewCell {
+                let indexPath = friendsTableView.indexPath(for: cell)
+                let val = indexPath?[1]
+                let user_to_add = self.searchUsers[Int(val!)]
+                makeRequest(otherUser: user_to_add)
+            }
+            
+        } else if screen == 1 {
+            _ = 0
+        } else {
+            _ = 0
+        }
+    }
+    
+    @IBAction func friendActionOther(sender: UIButton) {
+        if let cell = sender.superview?.superview as? FriendingCellsTableViewCell {
+            let indexPath = friendsTableView.indexPath(for: cell)
+            let val = indexPath?[1]
+            let object_to_add = self.request_user[Int(val!)]
+            let user_to_add = object_to_add["from"]
+            let full_name = object_to_add["fullname"] as! String
+            let phonenumber = object_to_add["phonenumber"] as! String
+            acceptRequest(otherUser: user_to_add as! PFUser, index: val!, other_user_name: full_name, other_user_number: phonenumber)
+        }
     }
     
     public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
