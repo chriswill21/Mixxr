@@ -81,6 +81,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         manager.startUpdatingLocation()
         
         eventslisting.reloadData()
+        super.viewDidLoad()
         
     }
     
@@ -149,6 +150,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             self.eventsmap.addAnnotation(self.pinAnnotationView.annotation!)
             
         }
+      
     }
 
     

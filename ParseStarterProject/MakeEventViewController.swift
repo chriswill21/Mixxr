@@ -116,6 +116,8 @@ class MakeEventViewController: UIViewController, UISearchBarDelegate,CLLocationM
         titles.insert(eventname.text!, at: 0)
         locations.insert(self.pointAnnotation.coordinate, at: 0)
         captions.insert(self.captionname.text!, at: 0)
+      
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM, dd, YYYY"
         times.append(formatter.string(from: DatePicker.date))
