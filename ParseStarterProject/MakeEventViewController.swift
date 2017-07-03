@@ -114,7 +114,8 @@ class MakeEventViewController: UIViewController, UISearchBarDelegate,CLLocationM
     
     @IBAction func eventcreator(_ sender: Any) {
         titles.insert(eventname.text!, at: 0)
-        locations.insert(self.pointAnnotation.coordinate, at: 0)
+        //locations.insert(self.pointAnnotation.coordinate, at: 0)
+        locations.append(self.pointAnnotation.coordinate)
         captions.insert(self.captionname.text!, at: 0)
       
         
