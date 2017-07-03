@@ -56,32 +56,31 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         
-        super.viewDidLoad()
-        
-        
-        
-        for index  in 0...locations.count-1 {
+    //super.viewDidLoad()
+        var i = 0
+        for coordinate in locations {
+            
             
             let annotation = MKPointAnnotation()
-            annotation.coordinate = locations[index]
-            annotation.subtitle = captions[index]
-            annotation.title = titles[index]
             
-            self.eventsmap.addAnnotation(annotation)
+            annotation.coordinate = coordinate
+            annotation.subtitle = captions[i]
+            annotation.title = titles[i]
             
-            
-            
-            
+            eventsmap.addAnnotation(annotation)
+            i = i + 1
             
         }
         
+        
+       
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
         
         eventslisting.reloadData()
-        //super.viewDidLoad()
+        super.viewDidLoad()
         
     }
     
