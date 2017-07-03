@@ -42,7 +42,7 @@ class MakeEventViewController: UIViewController, UISearchBarDelegate,CLLocationM
         manager.startUpdatingLocation()
         let location = locations[0]
         
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.05,0.05)
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.5,0.5)
         
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
@@ -116,6 +116,8 @@ class MakeEventViewController: UIViewController, UISearchBarDelegate,CLLocationM
         titles.insert(eventname.text!, at: 0)
         locations.insert(self.pointAnnotation.coordinate, at: 0)
         captions.insert(self.captionname.text!, at: 0)
+      
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM, dd, YYYY"
         times.append(formatter.string(from: DatePicker.date))

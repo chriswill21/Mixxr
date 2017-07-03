@@ -58,18 +58,18 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         super.viewDidLoad()
         
-        var i = 0
         
-        for coordinate in locations {
+        
+        for index  in 0...locations.count-1 {
             
             let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.subtitle = captions[i]
-            annotation.title = titles[i]
+            annotation.coordinate = locations[index]
+            annotation.subtitle = captions[index]
+            annotation.title = titles[index]
             
             self.eventsmap.addAnnotation(annotation)
             
-            i = i + 1
+            
             
             
             
@@ -81,6 +81,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         manager.startUpdatingLocation()
         
         eventslisting.reloadData()
+        //super.viewDidLoad()
         
     }
     
@@ -149,6 +150,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             self.eventsmap.addAnnotation(self.pinAnnotationView.annotation!)
             
         }
+      
     }
 
     
