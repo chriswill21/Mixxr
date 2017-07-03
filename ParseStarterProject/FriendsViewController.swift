@@ -143,13 +143,13 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
                 NSLog("Successfully retrieved \(objects?.count) records.")
                 
                 // Do something with the found objects
+                self.friend_user.removeAll(keepingCapacity: false)
                 self.friend_user += objects as [PFObject]!
                 
             } else {
                 // Log details of the failure
                 print("search query error")
             }
-            
             self.friends.removeAll()
             for friend in self.friend_user{
                 let my_friend = friend["fullname"]
@@ -161,8 +161,6 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         
         //ensure that requests array (of strings) is empty every time you do a request query
-        
-        
         let requests_query = PFQuery(className:"request")
         requests_query.whereKey("to", equalTo:PFUser.current()!)
         
@@ -233,6 +231,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         acl.getPublicWriteAccess = true
         follow.acl = acl
         follow.saveInBackground()
+        
     }
     
     func acceptRequest(otherUser: PFUser, index: Int, other_user_name: String, other_user_number: String) {
@@ -261,6 +260,13 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         follow_1.saveInBackground()
         follow_2.saveInBackground()
         
+        updateFriends()
+        friendsTableView.reloadData()
+    }
+    
+    
+    func declineRequest(index: Int){
+        self.request_user[index].deleteInBackground()
         updateFriends()
         friendsTableView.reloadData()
     }
@@ -321,7 +327,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             if friendsRequestsSwitch.selectedSegmentIndex == 0 {
                 // bind data from your normal data source
                 cell.phoneNumber.text? = " "
-                cell.textLabel?.text = table_data[indexPath.row]
+                cell.fullName?.text = table_data[indexPath.row]
                 print(table_data)
             } else {
                 cell.fullName.text? = self.requests[indexPath.row]
@@ -382,10 +388,16 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
                 let val = indexPath?[1]
                 let user_to_add = self.searchUsers[Int(val!)]
                 makeRequest(otherUser: user_to_add)
+                cell.addButton.setTitle("Added", for: .normal)
+                cell.addButton.titleLabel?.textColor = UIColor.red
             }
             
         } else if screen == 1 {
-            _ = 0
+            if let cell = sender.superview?.superview as? FriendingCellsTableViewCell {
+                let indexPath = friendsTableView.indexPath(for: cell)
+                let val = indexPath?[1]
+                declineRequest(index: val!)
+            }
         } else {
             _ = 0
         }
