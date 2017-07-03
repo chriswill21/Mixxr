@@ -42,7 +42,7 @@ class MakeEventViewController: UIViewController, UISearchBarDelegate,CLLocationM
         manager.startUpdatingLocation()
         let location = locations[0]
         
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.05,0.05)
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.5,0.5)
         
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
