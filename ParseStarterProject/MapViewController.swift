@@ -56,7 +56,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         
-        super.viewDidLoad()
+    //super.viewDidLoad()
         var i = 0
         for coordinate in locations {
             
@@ -67,7 +67,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             annotation.subtitle = captions[i]
             annotation.title = titles[i]
             
-            self.eventsmap.addAnnotation(annotation)
+            eventsmap.addAnnotation(annotation)
             i = i + 1
             
         }
@@ -80,7 +80,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         manager.startUpdatingLocation()
         
         eventslisting.reloadData()
-        //super.viewDidLoad()
+        super.viewDidLoad()
         
     }
     
