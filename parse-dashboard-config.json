@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "serverURL": "http://ec2-34-223-211-184.us-west-2.compute.amazonaws.com:80/parse",
+      "appId": "9378c8477cb58ad993bc370471ab8573ee9eef5ed",
+      "masterKey": "1611ac06ab3205a9894f67942ae697155eeb1ddf",
+      "appName": "MyApp"
+    }
+  ],
+"iconsFolder": "icons"
+}
