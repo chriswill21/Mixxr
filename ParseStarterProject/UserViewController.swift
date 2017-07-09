@@ -48,9 +48,9 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*let first = user?["firstname"] as! String
+        let first = user?["firstname"] as! String
         let last = user?["lastname"] as! String
-        usersName.text = first + " " + last*/
+        usersName.text = first + " " + last
         
 
         // Do any additional setup after loading the view.

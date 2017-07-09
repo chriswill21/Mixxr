@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
 import Parse
+import SCLAlertView
 
 class FriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
 
@@ -148,7 +148,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
                 
             } else {
                 // Log details of the failure
-                print("search query error")
+                print("friend query error")
             }
             self.friends.removeAll()
             for friend in self.friend_user{
@@ -170,7 +170,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.request_user += objects as [PFObject]!
             } else {
                 // Log details of the failure
-                print("search query error")
+                print("request query error")
             }
             
             self.requests.removeAll()
@@ -251,12 +251,16 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         follow_2.setObject(PFUser.current()?["fullname"] as! String, forKey: "fullname")
         follow_2.setObject(PFUser.current()?["phonenumber"] as! String, forKey: "phonenumber")
         
-        print("lil boat")
-        print(self.request_user)
-        print(self.request_user[index])
+        //remove request users of the index that i pressed
         self.request_user[index].deleteInBackground()
         
-        //remove request users of the index that i pressed
+        
+        
+        let acl = PFACL()
+        acl.getPublicReadAccess = true
+        acl.getPublicWriteAccess = true
+        follow_1.acl = acl
+        follow_2.acl = acl
         follow_1.saveInBackground()
         follow_2.saveInBackground()
         
@@ -267,6 +271,28 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func declineRequest(index: Int){
         self.request_user[index].deleteInBackground()
+        updateFriends()
+        friendsTableView.reloadData()
+    }
+    
+    func deleteFriend(index: Int){
+        self.friend_user[index].deleteInBackground()
+
+        let friend_delete_query = PFQuery(className:"friends")
+        friend_delete_query.whereKey("of", equalTo:friend_user[index]["user"])
+        friend_delete_query.whereKey("user", equalTo:PFUser.current())
+        
+        friend_delete_query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) -> Void in
+            if (error == nil) {
+                if (objects?.count)! > 0{
+                    objects?[0].deleteInBackground()
+                }
+            } else {
+                // Log details of the failure
+                print("friend deletion/query error")
+            }
+        }
+        
         updateFriends()
         friendsTableView.reloadData()
     }
@@ -351,13 +377,12 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             
             
             cell.addButton.setTitle("add", for: .normal)
-            cell.addButton.titleLabel?.font =  UIFont(name: "Futura", size: 20)
+            cell.addButton.titleLabel?.font =  UIFont(name: "Futura", size: 12)
             
             screen = -1
             my_request = searchUsers[indexPath.row]
             
         } else if friendsRequestsSwitch.selectedSegmentIndex == 1{
-            print("add request button")
             
             cell.addButton.isHidden = false
             cell.otherButtonOutlet.isHidden = false
@@ -370,10 +395,10 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             //print(self.request_user)
             screen = 1
         } else {
-            cell.addButton.isHidden = true
+            cell.addButton.isHidden = false
             cell.otherButtonOutlet.isHidden = true
+            cell.addButton.setTitle("Info", for: .normal)
             
-            cell.addButton.setTitle("Button", for: .normal)
             screen = 0
         }
         
@@ -399,7 +424,21 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
                 declineRequest(index: val!)
             }
         } else {
-            _ = 0
+            
+            if let cell = sender.superview?.superview as? FriendingCellsTableViewCell {
+                let indexPath = friendsTableView.indexPath(for: cell)
+                let val = indexPath?[1]
+                let alertView = SCLAlertView()
+                //alertView.addButton("First Button", target:self, selector:Selector("firstButton"))
+                alertView.addButton("Delete User?") {
+                    print("Second button tapped")
+                    self.deleteFriend(index: val!)
+                }
+                alertView.showSuccess(friends[val!], subTitle: "")
+                
+                //SCLAlertView().showInfo("Important info", subTitle: "You are great")
+            }
+            
         }
     }
     

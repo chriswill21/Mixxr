@@ -10,5 +10,6 @@ target 'ParseStarterProject-Swift' do
 pod 'Firebase/Core', '~> 4.0.0'
 pod 'Firebase/Auth', '~> 4.0.0'
 pod 'Firebase/Core', '~> 4.0.0'
+pod 'SCLAlertView'
 
 end
