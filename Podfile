@@ -7,6 +7,8 @@ target 'ParseStarterProject-Swift' do
 
   # Pods for ParseStarterProject-Swift
 
-pod 'Firebase/Core'
+pod 'Firebase/Core', '~> 4.0.0'
+pod 'Firebase/Auth', '~> 4.0.0'
+pod 'Firebase/Core', '~> 4.0.0'
 
 end

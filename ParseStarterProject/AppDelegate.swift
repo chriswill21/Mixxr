@@ -20,12 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)
-        -> Bool {
-            FirebaseApp.configure()
-            return true
-    }
+
+    
+
 
     //--------------------------------------
     // MARK: - UIApplicationDelegate
@@ -108,11 +105,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //            application.registerForRemoteNotificationTypes(types)
         //        }
 
-        return true
+        
         
         let types: UIUserNotificationType = UIUserNotificationType.badge
         let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         UIApplication.shared.registerUserNotificationSettings(notificationSettings)
+        
+        FirebaseApp.configure()
+        
+        return true
     }
 
     //--------------------------------------
