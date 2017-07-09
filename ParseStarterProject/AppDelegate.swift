@@ -10,6 +10,7 @@
 import UIKit
 
 import Parse
+import Firebase
 
 // If you want to use any of the UI components, uncomment this line
 // import ParseUI
@@ -18,6 +19,10 @@ import Parse
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+
+    
+
 
     //--------------------------------------
     // MARK: - UIApplicationDelegate
@@ -100,11 +105,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //            application.registerForRemoteNotificationTypes(types)
         //        }
 
-        return true
+        
         
         let types: UIUserNotificationType = UIUserNotificationType.badge
         let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         UIApplication.shared.registerUserNotificationSettings(notificationSettings)
+        
+        FirebaseApp.configure()
+        
+        return true
     }
 
     //--------------------------------------
