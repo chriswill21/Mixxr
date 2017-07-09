@@ -45,7 +45,7 @@ class SignUpViewController: UIViewController {
             user?["fullname"] = firstname.text! + " " + lastname.text!
             user?.saveInBackground { (success, error) in
                 if error != nil{
-                    self.createAlert(title: "Something went wrongs", message: "Please ensure that you type in your name and provided a valid phone number.")
+                    self.createAlert(title: "Something went wrong", message: "Please ensure that you type in your name and provided a valid phone number.")
                 } else {
                     self.performSegue(withIdentifier: "infoToProfile", sender: self)
                 }

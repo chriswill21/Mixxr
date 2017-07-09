@@ -10,15 +10,15 @@ import Foundation
 import Parse
 
 
-protocol Repository  {
-   associatedtype T
-   
-   //query for the event values based on user location or view location
-   //store events locally
-   //render the 
-   
-   func getAll() -> [T]
-   func getById(id: Int) -> T
-   func getByLocation(user: )
-   
-}
+//protocol Repository  {
+//   associatedtype T
+//   
+//   //query for the event values based on user location or view location
+//   //store events locally
+//   //render the 
+//   
+//   func getAll() -> [T]
+//   func getById(id: Int) -> T
+//   func getByLocation(user: )
+//   
+//}
