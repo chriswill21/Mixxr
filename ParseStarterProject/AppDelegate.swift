@@ -10,6 +10,7 @@
 import UIKit
 
 import Parse
+import Firebase
 
 // If you want to use any of the UI components, uncomment this line
 // import ParseUI
@@ -18,6 +19,13 @@ import Parse
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)
+        -> Bool {
+            FirebaseApp.configure()
+            return true
+    }
 
     //--------------------------------------
     // MARK: - UIApplicationDelegate
