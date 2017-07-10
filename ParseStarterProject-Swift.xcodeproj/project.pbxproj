@@ -31,6 +31,7 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		926FCD481F1271A5006EA380 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926FCD471F1271A5006EA380 /* Repository.swift */; };
+		A0060FAD1F13430A004904FD /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0060FAC1F13430A004904FD /* ChatCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		926FCD471F1271A5006EA380 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		A0060FAC1F13430A004904FD /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				3F2361681EF2BF0300D04C0E /* EventCell.swift */,
 				814C3AC91B69877600E307BB /* Info.plist */,
 				3F23616A1EF2BF8000D04C0E /* Events.swift */,
+				A0060FAC1F13430A004904FD /* ChatCell.swift */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				3F0F38231EF47D4000E8EB5B /* SignUpViewController.swift in Sources */,
 				3F986C911ED89E7C0049B78C /* MapViewController.swift in Sources */,
 				3F1D82DF1F11F59F00D29EC2 /* LogInViewController.swift in Sources */,
+				A0060FAD1F13430A004904FD /* ChatCell.swift in Sources */,
 				3F2361691EF2BF0300D04C0E /* EventCell.swift in Sources */,
 				244AF2911F086BEC00B22C9C /* EventPage.swift in Sources */,
 			);
