@@ -31,6 +31,7 @@
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		926FCD481F1271A5006EA380 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926FCD471F1271A5006EA380 /* Repository.swift */; };
 		928EAB8C1F130D4A00F77031 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 928EAB8B1F130D4A00F77031 /* GoogleService-Info.plist */; };
+		A0060FAD1F13430A004904FD /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0060FAC1F13430A004904FD /* ChatCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		249F187F1EF7D9F90044A4CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3E140711360C99AA9944B6D1 /* Pods_ParseStarterProject_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParseStarterProject_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0F38221EF47D4000E8EB5B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3F1D82DB1F103C3B00D29EC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F1D82DD1F115B0B00D29EC2 /* ParseStarterProject-Swift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ParseStarterProject-Swift.entitlements"; sourceTree = "<group>"; };
 		3F1D82DE1F11F59F00D29EC2 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3F2361641EF1D91400D04C0E /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		926FCD471F1271A5006EA380 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		928EAB8B1F130D4A00F77031 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A0060FAC1F13430A004904FD /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,7 @@
 				3F2361681EF2BF0300D04C0E /* EventCell.swift */,
 				814C3AC91B69877600E307BB /* Info.plist */,
 				3F23616A1EF2BF8000D04C0E /* Events.swift */,
+				A0060FAC1F13430A004904FD /* ChatCell.swift */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -312,6 +316,7 @@
 				3F0F38231EF47D4000E8EB5B /* SignUpViewController.swift in Sources */,
 				3F986C911ED89E7C0049B78C /* MapViewController.swift in Sources */,
 				3F1D82DF1F11F59F00D29EC2 /* LogInViewController.swift in Sources */,
+				A0060FAD1F13430A004904FD /* ChatCell.swift in Sources */,
 				3F2361691EF2BF0300D04C0E /* EventCell.swift in Sources */,
 				244AF2911F086BEC00B22C9C /* EventPage.swift in Sources */,
 			);
