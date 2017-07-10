@@ -11,7 +11,6 @@
 		244AF2911F086BEC00B22C9C /* EventPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AF2901F086BEC00B22C9C /* EventPage.swift */; };
 		249F18801EF7D9F90044A4CD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249F187F1EF7D9F90044A4CD /* CoreLocation.framework */; };
 		3F0F38231EF47D4000E8EB5B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F38221EF47D4000E8EB5B /* SignUpViewController.swift */; };
-		3F1D82DC1F103C3B00D29EC2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F1D82DB1F103C3B00D29EC2 /* GoogleService-Info.plist */; };
 		3F1D82DF1F11F59F00D29EC2 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1D82DE1F11F59F00D29EC2 /* LogInViewController.swift */; };
 		3F2361651EF1D91400D04C0E /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2361641EF1D91400D04C0E /* FriendsViewController.swift */; };
 		3F2361691EF2BF0300D04C0E /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2361681EF2BF0300D04C0E /* EventCell.swift */; };
@@ -31,6 +30,7 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		926FCD481F1271A5006EA380 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926FCD471F1271A5006EA380 /* Repository.swift */; };
+		928EAB8C1F130D4A00F77031 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 928EAB8B1F130D4A00F77031 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,6 @@
 		249F187F1EF7D9F90044A4CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3E140711360C99AA9944B6D1 /* Pods_ParseStarterProject_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParseStarterProject_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0F38221EF47D4000E8EB5B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		3F1D82DB1F103C3B00D29EC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F1D82DD1F115B0B00D29EC2 /* ParseStarterProject-Swift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ParseStarterProject-Swift.entitlements"; sourceTree = "<group>"; };
 		3F1D82DE1F11F59F00D29EC2 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3F2361641EF1D91400D04C0E /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +64,7 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		926FCD471F1271A5006EA380 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		928EAB8B1F130D4A00F77031 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +117,7 @@
 		81BA81471A49DA1800E65899 /* ParseStarterProject */ = {
 			isa = PBXGroup;
 			children = (
-				3F1D82DB1F103C3B00D29EC2 /* GoogleService-Info.plist */,
+				928EAB8B1F130D4A00F77031 /* GoogleService-Info.plist */,
 				244AF2901F086BEC00B22C9C /* EventPage.swift */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
@@ -242,7 +242,7 @@
 			files = (
 				814C3ACA1B69877600E307BB /* Main.storyboard in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
-				3F1D82DC1F103C3B00D29EC2 /* GoogleService-Info.plist in Resources */,
+				928EAB8C1F130D4A00F77031 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
