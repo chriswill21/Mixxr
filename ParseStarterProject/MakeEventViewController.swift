@@ -38,6 +38,7 @@ class MakeEventViewController: UIViewController, UISearchBarDelegate,CLLocationM
         present(searchController, animated: true, completion: nil)
     }
     
+    // We need to decide on whether to stick with CLLocation or Parse's geopoints. 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.startUpdatingLocation()
         let location = locations[0]
