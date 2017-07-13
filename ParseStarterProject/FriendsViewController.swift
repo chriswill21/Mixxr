@@ -430,8 +430,8 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
                 let val = indexPath?[1]
                 let alertView = SCLAlertView()
                 //alertView.addButton("First Button", target:self, selector:Selector("firstButton"))
-                alertView.addButton("Delete User?") {
-                    print("Second button tapped")
+                alertView.addButton("Delete Friend?") {
+                    print("Delete Friend")
                     self.deleteFriend(index: val!)
                 }
                 alertView.showSuccess(friends[val!], subTitle: "")
