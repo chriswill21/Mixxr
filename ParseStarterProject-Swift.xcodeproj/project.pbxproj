@@ -32,6 +32,8 @@
 		926FCD481F1271A5006EA380 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926FCD471F1271A5006EA380 /* Repository.swift */; };
 		928EAB8C1F130D4A00F77031 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 928EAB8B1F130D4A00F77031 /* GoogleService-Info.plist */; };
 		A0060FAD1F13430A004904FD /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0060FAC1F13430A004904FD /* ChatCell.swift */; };
+		A0060FB11F207313004904FD /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0060FB01F207313004904FD /* Event.swift */; };
+		A0060FB31F2073F9004904FD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0060FB21F2073F9004904FD /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +42,6 @@
 		249F187F1EF7D9F90044A4CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3E140711360C99AA9944B6D1 /* Pods_ParseStarterProject_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParseStarterProject_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0F38221EF47D4000E8EB5B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		3F1D82DB1F103C3B00D29EC2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F1D82DD1F115B0B00D29EC2 /* ParseStarterProject-Swift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ParseStarterProject-Swift.entitlements"; sourceTree = "<group>"; };
 		3F1D82DE1F11F59F00D29EC2 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3F2361641EF1D91400D04C0E /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +69,8 @@
 		926FCD471F1271A5006EA380 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		928EAB8B1F130D4A00F77031 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0060FAC1F13430A004904FD /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		A0060FB01F207313004904FD /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		A0060FB21F2073F9004904FD /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,19 +126,13 @@
 				928EAB8B1F130D4A00F77031 /* GoogleService-Info.plist */,
 				244AF2901F086BEC00B22C9C /* EventPage.swift */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
-				81BA814C1A49DA1800E65899 /* ViewController.swift */,
+				A0060FAF1F207304004904FD /* Models */,
 				926FCD471F1271A5006EA380 /* Repository.swift */,
-				3F9794FA1ED71B6E00B62E38 /* UserViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
-				3F1D82DE1F11F59F00D29EC2 /* LogInViewController.swift */,
 				3F8E4B541F034665002630A1 /* FriendingCellsTableViewCell.swift */,
-				3F0F38221EF47D4000E8EB5B /* SignUpViewController.swift */,
-				3F2361641EF1D91400D04C0E /* FriendsViewController.swift */,
-				3F986C921ED89EAA0049B78C /* MakeEventViewController.swift */,
-				3F986C901ED89E7C0049B78C /* MapViewController.swift */,
+				A0060FAE1F2072DB004904FD /* View Controllers */,
 				3F2361681EF2BF0300D04C0E /* EventCell.swift */,
 				814C3AC91B69877600E307BB /* Info.plist */,
-				3F23616A1EF2BF8000D04C0E /* Events.swift */,
 				A0060FAC1F13430A004904FD /* ChatCell.swift */,
 			);
 			path = ParseStarterProject;
@@ -164,6 +161,30 @@
 				81BA81761A49E0D500E65899 /* libsqlite3.dylib */,
 			);
 			name = "System Frameworks";
+			sourceTree = "<group>";
+		};
+		A0060FAE1F2072DB004904FD /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				81BA814C1A49DA1800E65899 /* ViewController.swift */,
+				3F1D82DE1F11F59F00D29EC2 /* LogInViewController.swift */,
+				3F2361641EF1D91400D04C0E /* FriendsViewController.swift */,
+				3F9794FA1ED71B6E00B62E38 /* UserViewController.swift */,
+				3F0F38221EF47D4000E8EB5B /* SignUpViewController.swift */,
+				3F23616A1EF2BF8000D04C0E /* Events.swift */,
+				3F986C921ED89EAA0049B78C /* MakeEventViewController.swift */,
+				3F986C901ED89E7C0049B78C /* MapViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A0060FAF1F207304004904FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A0060FB01F207313004904FD /* Event.swift */,
+				A0060FB21F2073F9004904FD /* Post.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		E03949D49CE87E17BB1C829B /* Pods */ = {
@@ -309,12 +330,14 @@
 				3F986C931ED89EAA0049B78C /* MakeEventViewController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				3F9794FB1ED71B6E00B62E38 /* UserViewController.swift in Sources */,
+				A0060FB11F207313004904FD /* Event.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				3F23616B1EF2BF8000D04C0E /* Events.swift in Sources */,
 				926FCD481F1271A5006EA380 /* Repository.swift in Sources */,
 				3F2361651EF1D91400D04C0E /* FriendsViewController.swift in Sources */,
 				3F0F38231EF47D4000E8EB5B /* SignUpViewController.swift in Sources */,
 				3F986C911ED89E7C0049B78C /* MapViewController.swift in Sources */,
+				A0060FB31F2073F9004904FD /* Post.swift in Sources */,
 				3F1D82DF1F11F59F00D29EC2 /* LogInViewController.swift in Sources */,
 				A0060FAD1F13430A004904FD /* ChatCell.swift in Sources */,
 				3F2361691EF2BF0300D04C0E /* EventCell.swift in Sources */,
